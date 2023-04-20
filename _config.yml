@@ -1,0 +1,11 @@
+# _config.yml
+
+title: "Jekyll Actions Demo"
+
+exclude:
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - Makefile
+  - README.md
+  - vendor/bundle
