@@ -23,7 +23,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  github-pages:
+  # Build job
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
