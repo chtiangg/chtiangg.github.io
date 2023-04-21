@@ -33,6 +33,8 @@ jobs:
         with:
           repository: chtiangg/slsa
           path: docs
+      - name: Run LS command
+        run: ls -la
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
