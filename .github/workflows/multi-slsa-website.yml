@@ -49,6 +49,7 @@ jobs:
         # Outputs to the './_site' directory by default
         run: |
           cd ./slsa/docs
+          echo 'gem "jekyll", "~> 4.0"' >> Gemfile # use jekyll 4.0
           bundle install
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}" --incremental
         env:
