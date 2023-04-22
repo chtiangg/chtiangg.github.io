@@ -49,7 +49,7 @@ jobs:
         # Outputs to the './_site' directory by default
         run: |
           cd ./slsa/docs
-          echo 'gem "jekyll", "~> 4.0"' >> Gemfile # use jekyll 4.0
+          # echo 'gem "jekyll", "~> 4.0"' >> Gemfile # HOWEVER! this cmd ends up with error "github-pages was resolved to 228, which depends on jekyll (= 3.9.3)"
           bundle install
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}" --incremental
         env:
