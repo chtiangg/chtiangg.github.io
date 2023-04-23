@@ -4,7 +4,7 @@
 # documentation.
 
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: ${{ github.actor }} plays multi-builds
+name: Tianyu plays multi-builds
 run-name: ${{ github.actor }} plays multi-builds
 
 on:
