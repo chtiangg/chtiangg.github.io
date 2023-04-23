@@ -55,7 +55,9 @@ jobs:
         env:
           JEKYLL_ENV: production
       - name: LS Build Result
-        run: ls -laR ./slsa/docs/_site
+        run: |
+          mv ./slsa/docs/_site ./slsa/docs/_site/latest
+          ls -laR ./slsa/docs/_site
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v1
