@@ -54,13 +54,13 @@ jobs:
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}" --incremental
         env:
           JEKYLL_ENV: production
-      - name: LS Build Result
+      - name: Move Build Result
         run: |
           cd ./slsa/docs/_site
           mkdir ../latest
           mv * ../latest
           mv ../latest .
-          ls -laR ./slsa/docs/_site
+          ls -laR
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v1
