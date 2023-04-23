@@ -56,9 +56,10 @@ jobs:
           JEKYLL_ENV: production
       - name: LS Build Result
         run: |
-          cd ./slsa/docs/
-          mv _site ..
-          mv .. _site/latest
+          cd ./slsa/docs/_site
+          mkdir ../latest
+          mv * ../latest
+          mv ../latest .
           ls -laR ./slsa/docs/_site
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
