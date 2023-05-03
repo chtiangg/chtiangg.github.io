@@ -43,11 +43,10 @@ jobs:
           cd slsa/docs
           bundle install
           cd ..
+          git checkout release/v1.0
           ls -ltR
       - name: Build v1.0
         run: |
-          git checkout release/v1.0
-          ls -ltr
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build
         env:
           JEKYLL_ENV: production
