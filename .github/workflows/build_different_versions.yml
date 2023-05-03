@@ -27,9 +27,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout SLSA repo
-        run: |
-          git clone https://github.com/chtiangg/slsa.git
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -39,11 +36,15 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
+      - name: Checkout SLSA repo
+        run: |
+          git clone https://github.com/chtiangg/slsa.git
+          cd slsa/docs
+          bundle install
       - name: Build v1.0
         run: |
           cd slsa
           git switch release/v1.0
-          bundle install
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build
         env:
           JEKYLL_ENV: production
@@ -51,14 +52,14 @@ jobs:
         run: |
           cd slsa
           git switch release/v0.1
-          ls -ltR
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build
+          ls _site -ltR
         env:
           JEKYLL_ENV: production
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: _site
+          path: slsa/_site
 
   # Deployment job
   deploy:
