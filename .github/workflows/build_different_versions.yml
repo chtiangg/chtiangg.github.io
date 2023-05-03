@@ -30,7 +30,6 @@ jobs:
       - name: Checkout SLSA repo
         run: |
           git clone https://github.com/chtiangg/slsa.git
-          git branch -a
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -43,6 +42,7 @@ jobs:
       - name: Go into Repo
         run: |
           cd slsa
+          git branch -a
           pwd
           ls -ltra
       - name: Build v1.0
