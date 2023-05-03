@@ -50,10 +50,9 @@ jobs:
       - name: Build v0.1
         run: |
           cd slsa
-          git switch remotes/origin/release/v0.1
-          ls -ltr
+          git switch release/v0.1
+          ls -ltR
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build
-          ls _site -ltR
         env:
           JEKYLL_ENV: production
       - name: Upload artifact
