@@ -42,7 +42,8 @@ jobs:
         run: |
           cd slsa/docs
           bundle install
-          cd ~/slsa
+          pwd
+          cd ..
       - name: Build v1.0
         run: |
           git switch release/v1.0
