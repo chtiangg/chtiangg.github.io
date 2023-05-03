@@ -39,7 +39,10 @@ jobs:
         id: pages
         uses: actions/configure-pages@v3
       - name: Install Bundle
-        run: bundle install
+        run: |
+          cd slsa/docs
+          bundle install
+          cd ~/slsa
       - name: Build v1.0
         run: |
           git switch release/v1.0
