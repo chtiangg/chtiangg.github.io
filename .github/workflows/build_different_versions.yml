@@ -38,15 +38,10 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
-      - name: Install Bundle
-        run: |
-          cd slsa/docs
-          bundle install
-          cd ..
-          git checkout release/v1.0
-          ls -ltR
       - name: Build v1.0
         run: |
+          git checkout release/v1.0
+          bundle install
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build
         env:
           JEKYLL_ENV: production
