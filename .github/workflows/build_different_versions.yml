@@ -45,9 +45,13 @@ jobs:
           git branch -a
           pwd
           ls -ltra
+      - name: test
+        run: |
+          pwd
+          git switch remotes/origin/release/v0.1
+          pwd
       - name: Build v1.0
         run: |
-          git switch remotes/origin/release/v0.1
           bundle install
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build
         env:
