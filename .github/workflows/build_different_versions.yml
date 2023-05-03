@@ -36,7 +36,7 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
-      - name: Checkout SLSA repo
+      - name: Checkout SLSA repo and install bundle
         run: |
           git clone https://github.com/chtiangg/slsa.git
           cd slsa/docs
@@ -53,7 +53,6 @@ jobs:
           cd slsa
           git switch release/v0.1
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build
-          ls _site -ltR
         env:
           JEKYLL_ENV: production
       - name: Upload artifact
