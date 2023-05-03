@@ -42,24 +42,26 @@ jobs:
         run: |
           cd slsa/docs
           bundle install
-          pwd
           cd ..
       - name: Build v1.0
         run: |
           git switch release/v1.0
+          ls -ltr
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build
         env:
           JEKYLL_ENV: production
       - name: Build v0.1
         run: |
           git switch release/v0.1
+          ls -ltr
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build
+          ls _site -ltR
         env:
           JEKYLL_ENV: production
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./_site
+          path: _site
 
   # Deployment job
   deploy:
