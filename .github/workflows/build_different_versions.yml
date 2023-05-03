@@ -40,11 +40,6 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Install Bundle
         run: bundle install
-
-  build:
-    runs-on: ubuntu-latest
-    needs: checkout
-    steps:
       - name: Build v1.0
         run: |
           git switch release/v1.0
@@ -57,11 +52,6 @@ jobs:
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build
         env:
           JEKYLL_ENV: production
-
-  upload:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
