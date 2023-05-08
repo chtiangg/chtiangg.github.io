@@ -41,12 +41,6 @@ jobs:
           git clone https://github.com/chtiangg/slsa.git
           cd slsa/docs
           bundle install
-      - name: Build a test release/main
-        run: |
-          cd slsa
-          git switch release/main  # !!!THIS IS A TEST release/main Branch!!!
-          cd docs
-          JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build --incremental
       - name: Build v1.0
         run: |
           cd slsa
@@ -58,6 +52,14 @@ jobs:
         run: |
           cd slsa
           git switch release/v0.1
+          JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build --incremental
+        env:
+          JEKYLL_ENV: production
+      - name: Build a test release/main
+        run: |
+          cd slsa
+          git switch release/main  # !!!THIS IS A TEST release/main Branch!!!
+          cd docs
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build --incremental
         env:
           JEKYLL_ENV: production
