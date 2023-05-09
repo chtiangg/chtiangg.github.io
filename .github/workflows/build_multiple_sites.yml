@@ -38,9 +38,9 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Checkout SLSA repo and install bundle
         run: |
-          git clone -b release/main --single-branch https://github.com/chtiangg/slsa.git slsa
-          git clone -b test/v1.0 --single-branch https://github.com/chtiangg/slsa.git slsa/docs/v1.0
-          git clone -b test/v0.1 --single-branch ttps://github.com/chtiangg/slsa.git slsa/docs/v0.1
+          git clone -b release/main https://github.com/chtiangg/slsa.git slsa
+          git clone -b test/v1.0 https://github.com/chtiangg/slsa.git slsa/docs/v1.0
+          git clone -b test/v0.1 https://github.com/chtiangg/slsa.git slsa/docs/v0.1
           cd slsa/docs
           bundle install
           ls -lR
