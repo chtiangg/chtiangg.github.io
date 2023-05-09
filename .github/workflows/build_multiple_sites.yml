@@ -42,6 +42,7 @@ jobs:
           git clone -b release/v1.0 https://github.com/chtiangg/slsa.git slsa/docs/v1.0
           git clone -b release/v0.1 https://github.com/chtiangg/slsa.git slsa/docs/v0.1
           cd slsa/docs
+          ls -lR
           bundle install
       - name: Build a test release/main
         run: |
@@ -50,4 +51,6 @@ jobs:
         env:
           JEKYLL_ENV: production
       - name: Show dir
-        run: ls -ltR
+        run: |
+          pwd
+          ls -lR
