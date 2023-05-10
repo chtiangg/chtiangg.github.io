@@ -43,7 +43,7 @@ jobs:
           # git clone -b test/v0.1 --single-branch https://github.com/chtiangg/slsa.git slsa/docs/v0.1
           git clone --recurse-submodules https://github.com/chtiangg/slsa.git
           cd slsa/docs
-          git siwtch test/main
+          git switch test/main
           git submodule update --remote
           bundle install
           ls -lR
