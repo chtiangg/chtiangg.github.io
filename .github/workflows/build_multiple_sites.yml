@@ -48,6 +48,7 @@ jobs:
       - name: Build a test release/main
         run: |
           pwd
+          ls -laR
           ./github/scripts/build.sh -s false
         shell: bash
       - name: Build a test release/main
