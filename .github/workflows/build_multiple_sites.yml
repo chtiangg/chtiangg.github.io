@@ -44,6 +44,10 @@ jobs:
 #           git submodule update --remote
 #           bundle install
 #           ls -lR
+      - name: Dispaly current environemnt
+        run: |
+          pwd
+          ls -laR
       - name: Build a test release/main
         run: ./github/scripts/build.sh -s false
         shell: bash
