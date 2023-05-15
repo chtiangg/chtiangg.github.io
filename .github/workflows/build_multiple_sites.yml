@@ -46,6 +46,7 @@ jobs:
 #           ls -lR
       - name: Dispaly current environemnt
         run: |
+          cd ..
           pwd
           ls -laR
       - name: Build a test release/main
