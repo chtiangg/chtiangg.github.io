@@ -1,14 +1,8 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Tianyu plays multi-builds
+name: Tianyu deployes the SLSA website
 run-name: ${{ github.actor }} plays multi-builds
 
 on:
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -27,45 +21,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-#       - name: Setup Ruby
-#        uses: ruby/setup-ruby@v1
-#         with:
-#           ruby-version: '3.0' # Not needed with a .ruby-version file
-#           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-#           cache-version: 0 # Increment this number if you need to re-download cached gems
-#       - name: Checkout SLSA repo and install bundle
-#         run: |
-#           git clone -b release/main --single-branch https://github.com/chtiangg/slsa.git slsa
-#           git clone -b test/v1.0 --single-branch https://github.com/chtiangg/slsa.git slsa/docs/v1.0
-#           git clone -b test/v0.1 --single-branch https://github.com/chtiangg/slsa.git slsa/docs/v0.1
-#           git clone --recurse-submodules https://github.com/chtiangg/slsa.git
-#           cd slsa/docs
-#           git switch test/main
-#           git submodule update --remote
-#           bundle install
-#           ls -lR
       - uses: actions/checkout@v3
-      - name: Build a test release/main
-        run: |
-          pwd
-          ls -laR
-          ./.github/scripts/build.sh -s false
+      - name: Runs the setup script
+        run: ./.github/scripts/build.sh -s false
         shell: bash
-      - name: Build a test release/main
+      - name: Build the website
         run: |
           cd slsa/docs
           JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build --incremental
         env:
           JEKYLL_ENV: production
-      - name: Setup Pages
+      - name: Setup pages
         id: pages
         uses: actions/configure-pages@v3
-      - name: Upload artifact
+      - name: Upload artifacts
         uses: actions/upload-pages-artifact@v1
         with:
           path: slsa/_site
   
-  # Deployment job
   deploy:
     environment:
       name: github-pages
@@ -73,6 +46,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy the website
         id: deployment
         uses: actions/deploy-pages@v2
