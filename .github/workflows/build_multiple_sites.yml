@@ -49,7 +49,7 @@ jobs:
         run: |
           pwd
           ls -laR
-          ./github/scripts/build.sh -s false
+          ./.github/scripts/build.sh -s false
         shell: bash
       - name: Build a test release/main
         run: |
