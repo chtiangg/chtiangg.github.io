@@ -1,5 +1,5 @@
 name: Tianyu deployes the SLSA website
-run-name: ${{ github.actor }} plays multi-builds
+run-name: ${{ github.actor }} deployes the SLSA website
 
 on:
   # Allows to run this workflow manually from the Actions tab
