@@ -45,13 +45,10 @@ jobs:
 #           bundle install
 #           ls -lR
       - uses: actions/checkout@v3
-      - name: Dispaly current environemnt
-        run: |
-          cd ..
-          pwd
-          ls -laR
       - name: Build a test release/main
-        run: ./github/scripts/build.sh -s false
+        run: |
+          pwd
+          ./github/scripts/build.sh -s false
         shell: bash
       - name: Build a test release/main
         run: |
