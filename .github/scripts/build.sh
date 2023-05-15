@@ -20,13 +20,13 @@ while getopts 'sh' flag; do
   esac
 done
 
-if [[ -d "slsa-test" ]]; then
-  rm -rf slsa-test
+if [[ -d "slsa" ]]; then
+  rm -rf slsa
 fi
 
 sudo apt install ruby ruby-dev bundler
-git clone --recurse-submodules https://github.com/chtiangg/slsa.git slsa-test
-cd slsa-test/docs
+git clone --recurse-submodules https://github.com/chtiangg/slsa.git
+cd slsa/docs
 git switch test/main
 git submodule update --remote
 bundle config set --local path 'vendor/bundle'
