@@ -27,25 +27,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.0' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          cache-version: 0 # Increment this number if you need to re-download cached gems
-      # - name: Checkout SLSA repo and install bundle
-        # run: |
-          # git clone -b release/main --single-branch https://github.com/chtiangg/slsa.git slsa
-          # git clone -b test/v1.0 --single-branch https://github.com/chtiangg/slsa.git slsa/docs/v1.0
-          # git clone -b test/v0.1 --single-branch https://github.com/chtiangg/slsa.git slsa/docs/v0.1
-          # git clone --recurse-submodules https://github.com/chtiangg/slsa.git
-          # cd slsa/docs
-          # git switch test/main
-          # git submodule update --remote
-          # bundle install
-          # ls -lR
+#       - name: Setup Ruby
+#        uses: ruby/setup-ruby@v1
+#         with:
+#           ruby-version: '3.0' # Not needed with a .ruby-version file
+#           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+#           cache-version: 0 # Increment this number if you need to re-download cached gems
+#       - name: Checkout SLSA repo and install bundle
+#         run: |
+#           git clone -b release/main --single-branch https://github.com/chtiangg/slsa.git slsa
+#           git clone -b test/v1.0 --single-branch https://github.com/chtiangg/slsa.git slsa/docs/v1.0
+#           git clone -b test/v0.1 --single-branch https://github.com/chtiangg/slsa.git slsa/docs/v0.1
+#           git clone --recurse-submodules https://github.com/chtiangg/slsa.git
+#           cd slsa/docs
+#           git switch test/main
+#           git submodule update --remote
+#           bundle install
+#           ls -lR
       - name: Build a test release/main
-        run: ./github/scripts/build.sh -b false
+        run: ./github/scripts/build.sh -s false
         shell: bash
       - name: Build a test release/main
         run: |
