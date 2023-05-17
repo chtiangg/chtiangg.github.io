@@ -30,6 +30,7 @@ jobs:
       - run: |
           cd docs
           ls -ltR
+          bundle config set --local path 'vendor/bundle'
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
