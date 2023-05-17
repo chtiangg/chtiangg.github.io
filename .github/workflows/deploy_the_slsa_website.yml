@@ -30,6 +30,12 @@ jobs:
       - run: |
           cd docs
           ls -ltR
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+          cache-version: 0
       - name: Setup pages
         uses: actions/configure-pages@v3
       - name: Build
