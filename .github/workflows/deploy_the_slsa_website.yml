@@ -27,20 +27,22 @@ jobs:
           repository: chtiangg/slsa
           ref: test/main
           submodules: recursive
-      - run: |
-          cd docs
-          ls -ltR
-          bundle config set --local path 'vendor/bundle'
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.0'
-          bundler-cache: true
-          cache-version: 0
+#       - run: |
+#           cd docs
+#           ls -ltR
+#           bundle config set --local path 'vendor/bundle'
+#       - name: Setup Ruby
+#         uses: ruby/setup-ruby@v1
+#         with:
+#           ruby-version: '3.0'
+#           bundler-cache: true
+#           cache-version: 0
       - name: Setup pages
         uses: actions/configure-pages@v3
       - name: Build
         uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./docs
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v1
   
