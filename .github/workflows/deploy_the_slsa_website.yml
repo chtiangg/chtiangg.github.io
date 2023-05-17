@@ -43,6 +43,7 @@ jobs:
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./docs
+          ref: test/main 
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v1
   
