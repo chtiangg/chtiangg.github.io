@@ -1,5 +1,4 @@
 name: [Subtree] Tianyu deployes
-run-name: ${{ github.actor }} deployes with subtree
 
 on:
   # Allows to run this workflow manually from the Actions tab
